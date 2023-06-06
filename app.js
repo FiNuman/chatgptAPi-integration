@@ -30,7 +30,7 @@ app.get('/', async(req, res) => {
 
 
          const configuration = new Configuration({
-            apiKey: process.env.key,
+            apiKey: process.env.forcliend,
          });
          const openai = new OpenAIApi(configuration);
 
