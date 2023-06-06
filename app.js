@@ -70,6 +70,7 @@ app.get('/', (req, res) => {
             .then(response => {
                console.log(response.data.choices[0].text);
                let Cresponse = response.data.choices[0].text
+               console.log(Cresponse)
                res.json({ response: Cresponse })
             })
             .catch(error => {
