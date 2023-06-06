@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
       .then(response => {
          let priviousQuery = response.data.data[0].reqandres;
 
-
+         console.log(priviousQuery)
          let Reference_document =
             `personal info
    Name- Angelica Palacio.
