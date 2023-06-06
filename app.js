@@ -8,10 +8,6 @@ const axios = require('axios');
 const { Configuration, OpenAIApi } = require("openai");
 
 
-
-const apiUrl = 'https://api.openai.com/v1/engines/davinci/completions';
-const accessToken = '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';
-
 app.get('/', async(req, res) => {
 
    // let fullname = req.query.fullname
@@ -30,7 +26,7 @@ app.get('/', async(req, res) => {
 
 
          const configuration = new Configuration({
-            apiKey: process.env.forcliend,
+            apiKey: process.env.OPENAI_API_KEY,
          });
          const openai = new OpenAIApi(configuration);
 
