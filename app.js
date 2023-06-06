@@ -45,7 +45,7 @@ app.get('/', async(req, res) => {
             stop: [" Human:", " AI:"],
          });
          console.log(sda.data.choices[0].text)
-
+         res.json({response : sda.data.choices[0].text})
       })
       .catch(error => {
          console.error('Error fetching data:', error);
