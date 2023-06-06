@@ -5,91 +5,52 @@
 const express = require("express");
 const app = express();
 const axios = require('axios');
+const { Configuration, OpenAIApi } = require("openai");
 
 
 
-app.get('/', (req, res) => {
+const apiUrl = 'https://api.openai.com/v1/engines/davinci/completions';
+const accessToken = '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';
+
+app.get('/', async(req, res) => {
 
    // let fullname = req.query.fullname
    // let question = req.query.query
 
    let fullname = 2071012037
-   let question = 'tell me the price'
+   let question = 'tell me about your business'
 
    axios.get('https://script.google.com/macros/s/AKfycbz-fHU8pU1KzqsiBpKR0phiMStEBecW3Evn4Rm-MxaPqxXbMIbsSPwUE9dit1PcIEZDjA/exec?fullname=' + fullname)
-      .then(response => {
+      .then(async response => {
          let priviousQuery = response.data.data[0].reqandres;
 
          console.log(priviousQuery)
          let Reference_document =
-            `personal info
-   Name- Angelica Palacio.
-   Gmail- angelicapalacioshomes@gmail.com.
-   Work in- Real Estate Agent.
-  
-  Business Info
-  Purpose: Helping people buy and sell houses
-  
-  Requirements
-  Down Payment- The first-time home buyer program you mentioned requires a 3.5% down payment.
-  Credit Score- A credit score of 580 or higher is required.
-  Employment History- A minimum of 2 years of employment is required.
-  
-  Available Area for buying and selling home:
-   1-Riverside County
-   2-San Diego County
-   3-Los Angeles County
-   4- San Bernardino County
-  
-  Requirements
-  Down Payment- The first-time home buyer program you mentioned requires a 3.5% down payment.
-  Credit Score- A credit score of 580 or higher is required.
-  Employment History- A minimum of 2 years of employment is required.
-  
-  schedule a call with me. (please delivery this link as quickly as possible that important .)
-  https://calendly.com/angelicapalacioshomes/15min 
-  
-  conversation history [${priviousQuery}]
-  
-  customer query "${question}".  just gave the reply.`
+            `personal info\nName- Angelica Palacio.\nGmail- angelicapalacioshomes@gmail.com.\nWork in- Real Estate Agent.\n\nBusiness Info\nPurpose: Helping people buy and sell houses\n\nRequirements\nDown Payment- The first-time home buyer program you mentioned requires a 3.5% down payment.\nCredit Score- A credit score of 580 or higher is required.\nEmployment History- A minimum of 2 years of employment is required.\n\nAvailable Area for buying and selling home:\n1-Riverside County\n2-San Diego County\n3-Los Angeles County\n4- San Bernardino County\n\nRequirementsDown Payment- The first-time home buyer program you mentioned requires a 3.5% down payment.\nCredit Score- A credit score of 580 or higher is required.\nEmployment History- A minimum of 2 years of employment is required.\n\nschedule a call with me. (please delivery this link as quickly as possible that important .)\nhttps://calendly.com/angelicapalacioshomes/15min \n\nconversation history [${priviousQuery}]\n\ncustomer query "${question}".  just gave the reply.`
 
-         const apiUrl = 'https://api.openai.com/v1/engines/davinci/completions';
-         const accessToken = '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';
 
-         const headers = {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-         };
+         const configuration = new Configuration({
+            apiKey: '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',
+         });
+         const openai = new OpenAIApi(configuration);
 
-         const requestData = {
-            'prompt': Reference_document,
-            'max_tokens': 50,
-         };
-
-         axios.post(apiUrl, requestData, { headers })
-            .then(response => {
-               console.log(response.data.choices[0].text);
-               let Cresponse = response.data.choices[0].text
-               console.log(Cresponse)
-               res.json({ response: Cresponse })
-            })
-            .catch(error => {
-               console.error('Error:', error.response.data);
-            });
+         const sda = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: Reference_document,
+            temperature: 0.9,
+            max_tokens: 50,
+            top_p: 1,
+            frequency_penalty: 0.0,
+            presence_penalty: 0.6,
+            stop: [" Human:", " AI:"],
+         });
+         console.log(sda.data.choices[0].text)
 
       })
       .catch(error => {
          console.error('Error fetching data:', error);
       });
-
-
-   res.send('Nothing')
 })
-
-
-
-
-
 
 
 //========================================================================================
