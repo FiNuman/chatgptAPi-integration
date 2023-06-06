@@ -10,20 +10,19 @@ const axios = require('axios');
 
 app.get('/', (req, res) => {
 
-   let fullname = req.query.fullname
-   let question = req.query.query
+   // let fullname = req.query.fullname
+   // let question = req.query.query
 
-   axios.get('https://script.google.com/macros/s/AKfycbz-fHU8pU1KzqsiBpKR0phiMStEBecW3Evn4Rm-MxaPqxXbMIbsSPwUE9dit1PcIEZDjA/exec?fullname='+fullname)
+   let fullname = 2071012037
+   let question = 'tell me the price'
+
+   axios.get('https://script.google.com/macros/s/AKfycbz-fHU8pU1KzqsiBpKR0phiMStEBecW3Evn4Rm-MxaPqxXbMIbsSPwUE9dit1PcIEZDjA/exec?fullname=' + fullname)
       .then(response => {
-         let priviousQuery = response.data.data;
-         console.log(response.data)
-      })
-      .catch(error => {
-         console.error('Error fetching data:', error);
-      });
+         let priviousQuery = response.data.data[0].reqandres;
 
 
-   let Reference_document = `personal info 
+         let Reference_document =
+            `personal info
    Name- Angelica Palacio.
    Gmail- angelicapalacioshomes@gmail.com.
    Work in- Real Estate Agent.
@@ -50,23 +49,46 @@ app.get('/', (req, res) => {
   schedule a call with me. (please delivery this link as quickly as possible that important .)
   https://calendly.com/angelicapalacioshomes/15min 
   
-  conversation history [{{cuf_9391027}}]
+  conversation history [${priviousQuery}]
   
-  customer query "{{cuf_9387773|fallback:""}}".  just gave the reply.`
+  customer query "${question}".  just gave the reply.`
+
+         const apiUrl = 'https://api.openai.com/v1/engines/davinci/completions';
+         const accessToken = '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';
+
+         const headers = {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+         };
+
+         const requestData = {
+            'prompt': Reference_document,
+            'max_tokens': 50,
+         };
+
+         axios.post(apiUrl, requestData, { headers })
+            .then(response => {
+               console.log(response.data.choices[0].text);
+               let Cresponse = response.data.choices[0].text
+               res.json({ response: Cresponse })
+            })
+            .catch(error => {
+               console.error('Error:', error.response.data);
+            });
+
+      })
+      .catch(error => {
+         console.error('Error fetching data:', error);
+      });
 
 
    res.send('Nothing')
 })
-// axios.get
-// axios.get('https://script.google.com/macros/s/AKfycbwIganxO-yArrUU26QWs7iGhPqRpLkgnS4sUewVuWUMQLOXpp5CgPcdtRvpZZ00ZlvLHg/exec?update=2071012037&value=newdata')
-//    .then(response => {
-//       let priviousQuery = response.data.data;
-//       console.log(response.data)
 
-//    })
-//    .catch(error => {
-//       console.error('Error fetching data:', error);
-//    });
+
+
+
+
 
 
 //========================================================================================
