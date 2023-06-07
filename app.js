@@ -50,9 +50,7 @@ app.get('/', async(req, res) => {
 
 
 const sasd = process.env.OPENAI_API_KEY
-
-const sasd2 = process.env.OPENAI_API_KEY.OPENAI_API_KEY
-console.log(sasd,sasd2);
+console.log(sasd);
 
 
 
