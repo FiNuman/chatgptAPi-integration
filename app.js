@@ -71,18 +71,18 @@ app.get('/', async (req, res) => {
             chunks.push(text.substr(i, chunkSize));
          }
          let response1, response2, response3
-         if (chunks.length == 1) {
-            response1 = text.substr(0, 255);
+         if (chunks.length === 1) {
+            response1 = chunks[0];
             response2 = ''
             response3 = ''
-         } if (chunks.length == 2) {
-            response1 = text.substr(0, 255);
-            response2 = text.substr(255, 255);
+         }else if (chunks.length === 2) {
+            response1 = chunks[1];
+            response2 = chunks[2];
             response3 = ''
-         } if (chunks.length == 3) {
-            response1 = text.substr(0, 255);
-            response2 = text.substr(255, 255);
-            response3 = text.substr(510, 255);
+         }else if (chunks.length === 3) {
+            response1 = chunks[0];
+            response2 = chunks[1];
+            response3 = chunks[2];
          }
          console.log({ response1: response1, response2: response2, response3: response3 })
          res.json({ response1: response1, response2: response2, response3: response3 })
