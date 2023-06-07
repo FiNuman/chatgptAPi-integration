@@ -49,6 +49,13 @@ app.get('/', async(req, res) => {
 })
 
 
+const onrenderKey = process.env.onrender;
+console.log(onrenderKey);
+
+const sasd = process.env.OPENAI_API_KEY
+console.log(sasd);
+
+
 //========================================================================================
 //                                Server Start
 //========================================================================================
