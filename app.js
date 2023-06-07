@@ -6,6 +6,11 @@ const express = require("express");
 const app = express();
 const axios = require('axios');
 const { Configuration, OpenAIApi } = require("openai");
+const dotenv = require('dotenv');
+const path = require('path');
+const envPath = path.resolve(__dirname, '/etc/secrets/.env');
+dotenv.config({ path: envPath });
+
 
 
 app.get('/', async(req, res) => {
