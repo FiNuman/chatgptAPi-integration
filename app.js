@@ -84,6 +84,7 @@ app.get('/', async (req, res) => {
             response2 = text.substr(255, 255);
             response3 = text.substr(510, 255);
          }
+         console.log({ response1: response1, response2: response2, response3: response3 })
          res.json({ response1: response1, response2: response2, response3: response3 })
       })
       .catch(error => {
