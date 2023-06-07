@@ -16,7 +16,8 @@ app.get('/', async (req, res) => {
          let priviousQuery = response.data.data[0].reqandres;
 
          let Reference_document =
-            `personal info:
+            `
+            personal info:
             Name Angelica Palacio.
             Gmail angelicapalacioshomes@gmail.com.
             Work in Real Estate Agent.
@@ -36,12 +37,14 @@ app.get('/', async (req, res) => {
             3 Los Angeles County
             4 San Bernardino County
             
-           schedule a call with me.
-           https://calendly.com/angelicapalacioshomes/15min
+            schedule a call with me.
+            https://calendly.com/angelicapalacioshomes/15min please provide the link as soon as possible in conversation That is important.
            
            conversation history: [${priviousQuery}]
            
-           customer query: "${question}".  just gave the reply.`
+
+
+           customer query: "${question}".  just gave the reply dont add this word answer,reply,respone. that is continious chat`
 
 
          const configuration = new Configuration({
