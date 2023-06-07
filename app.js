@@ -59,7 +59,7 @@ app.get('/', async (req, res) => {
             presence_penalty: 0.6,
             stop: [" Human:", " AI:"],
          });
-
+ 
          let text = sda.data.choices[0].text;
 
          const chunkSize = 255;
