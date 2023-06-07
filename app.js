@@ -49,7 +49,7 @@ app.get('/', async(req, res) => {
 })
 
 
-const sasd = process.env.OPENAI_API_KEY
+const sasd = process.env.gptkey
 console.log(sasd);
 
 
