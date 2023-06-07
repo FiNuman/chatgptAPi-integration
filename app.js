@@ -18,8 +18,7 @@ app.get('/', async(req, res) => {
 
    let fullname = req.query.fullname
    let question = req.query.query
-
-   axios.get('https://script.google.com/macros/s/AKfycbz-fHU8pU1KzqsiBpKR0phiMStEBecW3Evn4Rm-MxaPqxXbMIbsSPwUE9dit1PcIEZDjA/exec?fullname=' + fullname)
+   axios.get('https://script.google.com/macros/s/AKfycbz1Ggu7kyUmiGOwYjbwFQrJeFtXfmkETt0s_rfD278eLync2_sC071Eh6mN9_HpYMYeWw/exec?fullname=' + fullname)
       .then(async response => {
          let priviousQuery = response.data.data[0].reqandres;
 
