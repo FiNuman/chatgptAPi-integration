@@ -71,10 +71,7 @@ app.get('/', async (req, res) => {
          Conversation History:
          [${priviousQuery}]
          
-         Customer Query: "${question}"
-         (Provide your customer's query here)
-         
-         Just provide the appropriate response to the customer based on their query.`
+         Customer Query "${question}" (just gave the reply)`
 
 
          const configuration = new Configuration({
