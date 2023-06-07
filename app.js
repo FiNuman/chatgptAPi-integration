@@ -52,7 +52,7 @@ app.get('/', async (req, res) => {
          const sda = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: Reference_document,
-            temperature: 0.9,
+            temperature: 0.8,
             max_tokens: 150,
             top_p: 1,
             frequency_penalty: 0.0,
