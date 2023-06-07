@@ -28,7 +28,7 @@ app.get('/', async (req, res) => {
             model: "text-davinci-003",
             prompt: Reference_document,
             temperature: 0.9,
-            max_tokens: 50,
+            max_tokens: 100,
             top_p: 1,
             frequency_penalty: 0.0,
             presence_penalty: 0.6,
