@@ -7,13 +7,6 @@ const app = express();
 const axios = require('axios');
 const { Configuration, OpenAIApi } = require("openai");
 
-// const dotenv = require('dotenv');
-// const path = require('path');
-// const envPath = path.resolve(__dirname, '/etc/secrets/.env');
-// dotenv.config({ path: envPath });
-
-
-
 app.get('/', async (req, res) => {
 
    let fullname = req.query.fullname
@@ -42,11 +35,28 @@ app.get('/', async (req, res) => {
             presence_penalty: 0.6,
             stop: [" Human:", " AI:"],
          });
-         
+
          let text = sda.data.choices[0].text;
-         const response1 = text.substr(0, 255);
-         const response2 = text.substr(255, 255);
-         const response3 = text.substr(510, 255);
+
+         const chunkSize = 255;
+         const chunks = [];
+         for (let i = 0; i < text.length; i += chunkSize) {
+            chunks.push(text.substr(i, chunkSize));
+         }
+         let response1, response2, response3
+         if (chunks.length == 1) {
+            response1 = text.substr(0, 255);
+            response2 = ''
+            response3 = ''
+         } if (chunks.length == 2) {
+            response1 = text.substr(0, 255);
+            response2 = text.substr(255, 255);
+            response3 = ''
+         } if (chunks.length == 3) {
+            response1 = text.substr(0, 255);
+            response2 = text.substr(255, 255);
+            response3 = text.substr(510, 255);
+         }
          res.json({ response1: response1, response2: response2, response3: response3 })
       })
       .catch(error => {
@@ -54,6 +64,7 @@ app.get('/', async (req, res) => {
       });
 })
 
+// res.json({ response1: response1, response2: response2, response3: response3 })
 
 //========================================================================================
 //                                Server Start
