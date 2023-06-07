@@ -15,63 +15,63 @@ app.get('/', async (req, res) => {
       .then(async response => {
          let priviousQuery = response.data.data[0].reqandres;
 
-         // let Reference_document =
-         //    `personal info:
-         //    Name Angelica Palacio.
-         //    Gmail angelicapalacioshomes@gmail.com.
-         //    Work in Real Estate Agent.
+         let Reference_document =
+            `personal info:
+            Name Angelica Palacio.
+            Gmail angelicapalacioshomes@gmail.com.
+            Work in Real Estate Agent.
             
-         //    Business Info:
-         //    Purpose Helping people buy and sell houses
+            Business Info:
+            Purpose Helping people buy and sell houses
             
-         //    Requirements:
-         //    The first-time home buyer program you mentioned requires a 3.5% down payment.
-         //    A credit score of 580 or higher is required.
-         //    A minimum of 2 years of employment is required.
+            Requirements:
+            The first-time home buyer program you mentioned requires a 3.5% down payment.
+            A credit score of 580 or higher is required.
+            A minimum of 2 years of employment is required.
             
             
-         //    Available Area for buying and selling home:
-         //    1 Riverside County
-         //    2 San Diego County
-         //    3 Los Angeles County
-         //    4 San Bernardino County
+            Available Area for buying and selling home:
+            1 Riverside County
+            2 San Diego County
+            3 Los Angeles County
+            4 San Bernardino County
             
-         //   schedule a call with me.
-         //   https://calendly.com/angelicapalacioshomes/15min
+           schedule a call with me.
+           https://calendly.com/angelicapalacioshomes/15min
            
-         //   conversation history: [${priviousQuery}]
+           conversation history: [${priviousQuery}]
            
-         //   customer query: "${question}".  just gave the reply.`
+           customer query: "${question}".  just gave the reply.`
 
 
-         let Reference_document = 
-         `Personal Info:
-         Name: Angelica Palacio
-         Gmail: angelicapalacioshomes@gmail.com
-         Occupation: Real Estate Agent
+         // let Reference_document = 
+         // `Personal Info:
+         // Name: Angelica Palacio
+         // Gmail: angelicapalacioshomes@gmail.com
+         // Occupation: Real Estate Agent
          
-         Business Info:
-         Purpose: Helping people buy and sell houses
+         // Business Info:
+         // Purpose: Helping people buy and sell houses
          
-         Requirements:
-         - The first-time home buyer program you mentioned requires a 3.5% down payment.
-         - A credit score of 580 or higher is required.
-         - A minimum of 2 years of employment is required.
+         // Requirements:
+         // - The first-time home buyer program you mentioned requires a 3.5% down payment.
+         // - A credit score of 580 or higher is required.
+         // - A minimum of 2 years of employment is required.
          
-         Available Areas for Buying and Selling Homes:
-         1. Riverside County
-         2. San Diego County
-         3. Los Angeles County
-         4. San Bernardino County
+         // Available Areas for Buying and Selling Homes:
+         // 1. Riverside County
+         // 2. San Diego County
+         // 3. Los Angeles County
+         // 4. San Bernardino County
          
-         Schedule a Call with Me:
-         You can schedule a 15-minute call with me using the following link:
-         [Schedule Call](https://calendly.com/angelicapalacioshomes/15min)
+         // Schedule a Call with Me:
+         // You can schedule a 15-minute call with me using the following link:
+         // [Schedule Call](https://calendly.com/angelicapalacioshomes/15min)
          
-         Conversation History:
-         [${priviousQuery}]
+         // Conversation History:
+         // [${priviousQuery}]
          
-         Customer Query "${question}" (just gave the reply)`
+         // Customer Query :"${question}" (just gave the reply)`
 
 
          const configuration = new Configuration({
