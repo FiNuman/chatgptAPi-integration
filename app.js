@@ -48,7 +48,6 @@ app.get('/', async(req, res) => {
          });
          console.log(sda.data.choices[0].text)
          res.json({response : sda.data.choices[0].text})
-         res.json({response : 'response form server'})
       })
       .catch(error => {
          console.error('Error fetching data:', error);
