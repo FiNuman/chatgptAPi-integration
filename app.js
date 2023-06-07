@@ -45,32 +45,36 @@ app.get('/', async (req, res) => {
 
 
          let Reference_document = 
-         `Category: Personal Info
+         `Personal Info:
          Name: Angelica Palacio
          Gmail: angelicapalacioshomes@gmail.com
-         Work: Real Estate Agent
+         Occupation: Real Estate Agent
          
-         Category: Business Info
+         Business Info:
          Purpose: Helping people buy and sell houses
          
-         Category: Requirements
+         Requirements:
+         - The first-time home buyer program you mentioned requires a 3.5% down payment.
+         - A credit score of 580 or higher is required.
+         - A minimum of 2 years of employment is required.
          
-         3.5% down payment is required for the first-time home buyer program.
-         A credit score of 580 or higher is required.
-         A minimum of 2 years of employment is required.
-         Category: Available Area for Buying and Selling Homes
+         Available Areas for Buying and Selling Homes:
+         1. Riverside County
+         2. San Diego County
+         3. Los Angeles County
+         4. San Bernardino County
          
-         Riverside County
-         San Diego County
-         Los Angeles County
-         San Bernardino County
-         Schedule a call with me:
+         Schedule a Call with Me:
+         You can schedule a 15-minute call with me using the following link:
+         [Schedule Call](https://calendly.com/angelicapalacioshomes/15min)
          
-         Link: [https://calendly.com/angelicapalacioshomes/15min]
          Conversation History:
          [${priviousQuery}]
          
-         Customer Query: "${question}" (just gave the reply)`
+         Customer Query: "${question}"
+         (Provide your customer's query here)
+         
+         Just provide the appropriate response to the customer based on their query.`
 
 
          const configuration = new Configuration({
